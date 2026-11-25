@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Final | Habilidades Directivas — UMAD</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { umad: "#002855", gold: "#C59B27" },
+          fontFamily: { sans: ["Inter", "system-ui", "sans-serif"], serif: ["Georgia", "serif"] }
+        }
+      }
+    };
+  </script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar" aria-label="Navegación principal">
+    <div class="brand-mark">
+      <img src="assets/umad-emblema.png" alt="Escudo Universidad Madero">
+    </div>
+    <nav id="sectionNav" class="section-nav"></nav>
+    <button id="printButton" class="print-button" type="button" title="Exportar o imprimir PDF">
+      <i data-lucide="download"></i><span>Exportar PDF</span>
+    </button>
+  </aside>
+
+  <main id="presentation">
+    <section class="slide active" data-title="Portada">
+      <div class="cover-grid">
+        <div class="cover-accent" aria-hidden="true"></div>
+        <div class="cover-content">
+          <div class="cover-topline">
+            <div class="inline-logo">
+              <img src="assets/umad-logo.png" alt="UMAD Universidad Madero">
+            </div>
+            <span class="course-tag">Proyecto Final</span>
+          </div>
+
+          <div class="cover-main">
+            <p class="eyebrow">Ingeniería en Software · Puebla</p>
+            <h1>Proyecto Final Ordinario: <span>Análisis de Habilidades Directivas y Plan de Acción</span></h1>
+            <div class="author-block">
+              <span class="author-line"></span>
+              <div><strong>Jaime Iván Sánchez Romero</strong><small>Ingeniería en Software — Universidad Madero (UMAD), Puebla</small></div>
+            </div>
+          </div>
+
+          <div class="cover-footer">
+            <div><span>Curso</span><strong>Desarrollo de habilidades directivas</strong></div>
+            <div><span>Fecha de entrega</span><strong>25 de noviembre de 2026</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Comparativo">
+      <div class="section-shell">
+        <header class="section-header">
+          <div><p class="eyebrow">01 · Autodiagnóstico</p><h2>Comparativo de Habilidades</h2></div>
+          <div id="skillFilters" class="filters"></div>
+        </header>
+        <div class="comparison-layout">
+          <article class="chart-card">
+            <div class="chart-heading"><div><span>Evaluación global</span><strong>Inicio vs. Actual</strong></div><div class="legend"><i class="initial"></i>Inicial <i class="current"></i>Actual</div></div>
+            <div class="chart-wrap"><canvas id="skillsRadar"></canvas></div>
+          </article>
+          <article class="skill-summary">
+            <div class="summary-score"><span id="summaryAverage">3.8</span><small>/ 5 promedio</small></div>
+            <p><strong id="summaryTitle">Todas las categorías</strong></p>
+            <p id="summaryText">La estabilidad numérica refleja consistencia en el autodiagnóstico; las reflexiones muestran mayor profundidad y criterio adquirido.</p>
+          </article>
+        </div>
+        <div id="skillCards" class="skill-grid"></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="FODA">
+      <div class="section-shell">
+        <header class="section-header">
+          <div><p class="eyebrow">02 · Panorama estratégico</p><h2>FODA de Habilidades Directivas</h2></div>
+          <span class="header-badge"><i data-lucide="compass"></i> Mentalidad de crecimiento</span>
+        </header>
+        <div id="fodaGrid" class="bento-grid"></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Plan de acción">
+      <div class="section-shell">
+        <header class="section-header">
+          <div><p class="eyebrow">03 · Ejecución</p><h2>Plan de Acción Personal</h2></div>
+          <span class="header-badge"><i data-lucide="target"></i> 8 acciones verificables</span>
+        </header>
+        <div id="actionGrid" class="action-grid"></div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Carta al futuro">
+      <div class="section-shell letter-shell">
+        <header class="section-header">
+          <div><p class="eyebrow">04 · Visión 2031</p><h2>Carta a mi “Yo Líder del Futuro”</h2></div>
+          <span class="header-badge"><i data-lucide="calendar-days"></i> Noviembre 2031</span>
+        </header>
+        <article class="letter-card">
+          <div class="letter-stamp">
+            <img src="assets/umad-emblema.png" alt="Escudo Universidad Madero">
+          </div>
+          <div class="letter-meta"><span>25 de noviembre de 2026</span><i></i><strong>25 de noviembre de 2031 — 5 años después</strong></div>
+          <h3>Querido Jaime del futuro (24 años):</h3>
+          <div class="letter-body">
+            <p>Te escribo hoy, 25 de noviembre de 2026, mientras estoy terminando el 3er semestre de la carrera. Si estás leyendo esto cinco años después, espero que sigas conservando esa disciplina que hoy te levanta todos los días, aunque obviamente cuando no tengo nada q hacer prefiero mil veces dormir.</p>
+            <p>Para este momento de tu vida, espero que hayas fortalecido especialmente aquellas habilidades que hoy representan tu mayor reto: la <strong>comunicación asertiva</strong> y la capacidad de <strong>empoderar genuinamente a otros</strong>. Quiero pensar que ya no sientes la necesidad de cargar con todo para asegurar que salga bien, sino que sabes formar, inspirar y dar confianza a equipos de desarrollo y trabajo para que brillen por mérito propio.</p>
+            <p>Desde hoy me comprometo contigo a dejar de dar las cosas por sentado, a escuchar en verdad a los demás en lugar de luego luego resolver. Continuar ser disciplinado y empatico con los demás (espero hayas ya mejorado eso obvio), también que pues mantengas la disciplina y controles mejor tu estres,tambien aprender nuevas habilidades no solo con lo de la uni, si no con otras cosas o experiencias que pudiste haber hecho a lo largo del camino y que te estas incluso prometiendo desde ahorita. Q pues obvio yo haré todo lo posible por ti</p>
+            <p>Espero que hayas superado el impulso de querer controlarlo todo solo, que hayas vencido el desgaste de querer abarcar más de lo humanamente sano, y que hoy seas un líder íntegro: alguien que no solo es bueno en su trabajo, sino que impulsa a las personas que trabajan a su lado a crecer y confiar en su propio talento. Animarlas e impulsarlas a ser mejores personas. Y pues tambien muy por aparte que conserves las amistades que hiciste, amistades que tengo ahorita, o incluso amistades que no tenía de idea que podían existir, espero que hayas triunfado y tengas dinero, oo al menos en un buen camino a tenerlo</p>
+            <div class="signature"><span>Con determinación y orgullo por el camino que apenas comienza,</span><strong>Jaime Iván Sánchez Romero (2026)</strong></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="presentation-controls">
+    <button id="prevButton" type="button"><i data-lucide="arrow-left"></i><span>Anterior</span></button>
+    <div class="slide-counter"><strong id="currentSlide">01</strong><span>/</span><span>05</span></div>
+    <button id="nextButton" type="button"><span>Siguiente</span><i data-lucide="arrow-right"></i></button>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
